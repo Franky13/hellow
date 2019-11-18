@@ -11,7 +11,9 @@ bot.on(/^\/say (.+)$/, (msg, props) => {
 bot.on('text', (msg) => {
     if (!msg.text.startsWith('/')){
     fs.appendFileSync('/tmp/test', msg.text + "\n");
-    return bot.sendMessage(msg.from.id, 'Молодец');
+    var answers = ['Молодец!', 'Так держать!', 'Отлично!', 'Замечательно!', '42', 'Супер!'];
+    var answer = answers[Math.floor(Math.random() * answers.length)];
+    return bot.sendMessage(msg.from.id, answer);
     }});
 bot.on('/show', (msg) => {
     const text = fs.readFileSync('/tmp/test');
