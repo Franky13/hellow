@@ -10,7 +10,7 @@ bot.on(/^\/say (.+)$/, (msg, props) => {
 });
 bot.on('text', (msg) => {
     if (!msg.text.startsWith('/')){
-    fs.writeFileSync('/tmp/test', msg.text);
+    fs.appendFileSync('/tmp/test', msg.text);
     return bot.sendMessage(msg.from.id, 'Молодец');
     }});
 bot.on('/show', (msg) => {
