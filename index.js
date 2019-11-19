@@ -1,7 +1,15 @@
 const TeleBot = require('telebot');
-const fs = require('fs');
+const bot = new TeleBot({
+    token: '1004574146:AAFQOcz8-1KxGdjrMfi-MrOv9xGKoI-v18c',
+    polling: { // Optional. Use polling.
+        interval: 1000, // Optional. How often check updates (in ms).
+        timeout: 0, // Optional. Update polling timeout (0 - short polling).
+        limit: 100, // Optional. Limits the number of updates to be retrieved.
+        retryTimeout: 5000, // Optional. Reconnecting timeout (in ms).
+    }
+});
 
-const bot = new TeleBot('1004574146:AAFQOcz8-1KxGdjrMfi-MrOv9xGKoI-v18c');
+const fs = require('fs');
 
 bot.on(['/start', '/hello'], (msg) => msg.reply.text('Welcome!'));
 bot.on(/^\/say (.+)$/, (msg, props) => {
